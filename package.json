@@ -1,0 +1,41 @@
+{
+  "name": "03-ecommerce-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "@sendgrid/mail": "^8.1.4",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.0.1",
+    "express-fileupload": "^1.5.1",
+    "express-session": "^1.18.1",
+    "http-status-codes": "^2.3.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "prisma": "^6.1.0",
+    "stripe": "^17.5.0",
+    "swagger-ui-express": "^5.0.1",
+    "twilio": "^5.4.0",
+    "yamljs": "^0.3.0"
+  }
+}

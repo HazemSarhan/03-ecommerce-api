@@ -1,0 +1,477 @@
+openapi: 3.0.0
+info:
+  title: 03-Ecommerce-API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/v1
+tags:
+  - name: Auth
+  - name: Users
+  - name: Categories
+  - name: Products
+  - name: Reviews
+  - name: Payments
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register User
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hazem
+                email:
+                  type: string
+                  example: hazoomy2021@outlook.com
+                phoneNumber:
+                  type: number
+                  example: '+966599802154'
+                password:
+                  type: string
+                  example: secret
+                bio:
+                  type: string
+                  example: >-
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                profilePicture:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/verify:
+    post:
+      tags:
+        - Auth
+      summary: Verify User Email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: hazoomy21@gmail.com
+                token: '385669'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login User With Email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: hazoomy21@gmail.com
+                password: secret
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/verify/phone:
+    post:
+      tags:
+        - Auth
+      summary: Verify With Phone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                phoneNumber: '+966599802154'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/verify/user/phone:
+    post:
+      tags:
+        - Auth
+      summary: Verify User Phone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                phoneNumber: '+966599802154'
+                token: '011399'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login/phone:
+    post:
+      tags:
+        - Auth
+      summary: Login With Phone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                phoneNumber: '+966599802154'
+                password: secret
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Logout User
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user:
+    get:
+      tags:
+        - Users
+      summary: Get All Users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user/d8091b0e-bc17-487b-b2f6-86165b9df075:
+    get:
+      tags:
+        - Users
+      summary: Get User By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - Users
+      summary: Update User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Hazem
+                email: hazoomy21@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Users
+      summary: Delete User
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /category:
+    post:
+      tags:
+        - Categories
+      summary: Create Category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: 'Category #2'
+                description: >-
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Categories
+      summary: Get All Categories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /category/2:
+    get:
+      tags:
+        - Categories
+      summary: Get Category By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - Categories
+      summary: Update Category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: UPDATED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Categories
+      summary: Delete Category
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product:
+    post:
+      tags:
+        - Products
+      summary: Create Product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: 'Product #2'
+                description:
+                  type: string
+                  example: >-
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                price:
+                  type: integer
+                  example: '150'
+                stockNumber:
+                  type: integer
+                  example: '1000'
+                image:
+                  type: string
+                  format: binary
+                categoryId:
+                  type: integer
+                  example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Products
+      summary: Get All Products
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/2:
+    get:
+      tags:
+        - Products
+      summary: Get Product By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/1:
+    patch:
+      tags:
+        - Products
+      summary: Update Product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                  example: UPDATED
+                categoryId:
+                  type: integer
+                  example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Products
+      summary: Delete Product
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /review:
+    post:
+      tags:
+        - Reviews
+      summary: Create Review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                rating: 1
+                comment: Really good product! I recommend it.
+                productId: 2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Reviews
+      summary: Get All Reviews
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /review/1:
+    get:
+      tags:
+        - Reviews
+      summary: Get Review By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - Reviews
+      summary: Update Review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                rating: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /review/3:
+    delete:
+      tags:
+        - Reviews
+      summary: Delete Review
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/cart:
+    post:
+      tags:
+        - Payments
+      summary: Add to Cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                productId: 1
+                quantity: 50
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Payments
+      summary: Get Cart Items
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/cart/clear:
+    delete:
+      tags:
+        - Payments
+      summary: Clear Cart
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/checkout/stripe:
+    post:
+      tags:
+        - Payments
+      summary: Checkout with Stripe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order:
+    get:
+      tags:
+        - Payments
+      summary: Get All Orders
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
